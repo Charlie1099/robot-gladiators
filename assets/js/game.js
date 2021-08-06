@@ -1,52 +1,9 @@
 var randomNumber = function( min, max) {
-        var value = Math.floor(Math.random() * (min - max + 1)) + min;
+        var value = Math.floor(Math.random() * (min - max + 1) + min);
 
         return value;
       };
 
-var playerInfo = {
-  name: window.prompt("What is your robot's name?"),
-  health: 100,
-  attack: 10,
-  money: 10,
-  reset: function() {
-    this.health = 100;
-    this.money = 10;
-    this.attack = 10;
-  },
-  refillHealth: function() {
-    this.health += 20;
-    this.money -= 7;
-  }
-  else {
-    window.alert("You don't have enough money!");
-  }
-},
-upgradeAttack: function() {
-  if (this.money >= 7) {
-    window.alert("Upgrading player's attack by 6 for 7 dollars.");
-    this.attack +=6;
-    this.money -= 7;
-  }
-  else {
-    window.alert("You don't have enough money!");
-  }
-}
-
-var enemyInfo = [
-  {
-    name: "Roborto",
-    attack: randomNumber(10, 14)
-  },
-  {
-    name: "Amy Android",
-    attack: randomNumber(10, 14)
-  },
-  {
-    name: "Robo Trumble",
-    attack: randomNumber(10, 14)
-  }
-];
 
 
 
@@ -200,6 +157,56 @@ var endGame = function() {
           break;
     }
  };
+var playerInfo = {
+  name: window.prompt("What is your robot's name?"),
+  health: 100,
+  attack: 10,
+  money: 10,
+  reset: function() {
+    this.health = 100;
+    this.money = 10;
+    this.attack = 10;
+  },
+  refillHealth: function() {
+    if (this.money >=7){
+    this.health += 20;
+    this.money -= 7;
+  }
+  else {
+    window.alert("You don't have enough money!");
+  }
+},
+upgradeAttack: function() {
+  if (this.money >= 7) {
+    window.alert("Upgrading player's attack by 6 for 7 dollars.");
+    this.attack +=6;
+    this.money -= 7;
+  }
+  else {
+    window.alert("You don't have enough money!");
+  }
+  }
+};
+
+var enemyInfo = [
+  {
+    name: "Roborto",
+    attack: randomNumber(10, 14)
+  },
+  {
+    name: "Amy Android",
+    attack: randomNumber(10, 14)
+  },
+  {
+    name: "Robo Trumble",
+    attack: randomNumber(10, 14)
+  }
+];
+
+console.log(enemyInfo);
+console.log(enemyInfo[0]);
+console.log(enemyInfo[0].name);
+console.log(enemyInfo[0]['attack']);
 
 startGame();
  
