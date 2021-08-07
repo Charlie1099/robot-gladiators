@@ -32,17 +32,67 @@ var fightOrSkip = function() {
    }
 }
 
+
+
 var fight = function(enemy) {
 
-while (playerInfo.health > 0 && enemy.health > 0) {
+  var isPlayerTurn= true;
+
+  if (Math.random() > 0.5){
+    isPlayerTurn = false;
+  }
+
+ while (playerInfo.health > 0 && enemy.health > 0) {
   //ask player if they'd like to fight or skip using fightOrSkip function
   if (fightOrSkip()) {
     //if true, leave fight by breaking loop
     break;
   }
+
   var damage = randomNumber(playerInfo.attack - 3, playerInfo.attack);
+  enemy.health = Math.max(0, enemy.health - damage);
+  console.log(
+    playerInfo.name +
+    "attacked" +
+    enemy.name +
+    ". " +
+    enemy.name +
+    "now has" +
+    enemy.health +
+    " health remaining."
+  );
+
+  //check player's health
+  if (palyerInfo.health <= 0) {
+    window.alert(playerInfo.name + "has died!");
+    // leave while() loop if player is dead
+    break;
+  } else{
+    window.alert(playerInfo.name + "still has" + playerInfo.health + "health left.");
   }
 }
+//switch turn order for next round
+  isPlayerTurn = !isPlayerTurn;
+ }
+};
+
+  // check enemy's health
+  if (enemy.health <= 0) {
+
+    //award player money for win
+    playerInfo.money = playerInfo.money + 20;
+
+    //leave while() loop since enemy is dead
+    break;
+  } else {
+    window.alert(enemy.name + " still has " + enemy.health + "health left.");
+  }
+  else {
+    var damage = randomNumber( enemy.attack - 3, enemy.attack);
+
+  }
+  }
+};
 
 // remove enemy's health by subtracting the amount set in the playerAttack variable
 enemy.health = Math.max(0, enemy.health - playerInfo.attack);
@@ -141,6 +191,7 @@ startGame();
 window.alert("Thank you for playing Robot Gladiators! Come back soon!");
 }
 };
+
 var shop = function() {
 var shopOptionPrompt = window.prompt(
   "Would you like to REFILL your health, UPGRADE your attack, or LEAVE the store? Please enter one for REFILL, 2 for UPGRADE, or 3 for LEAVE."
